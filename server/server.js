@@ -4,9 +4,10 @@ const PORT = process.env.PORT ?? 3000;
 const path = process.cwd();
 const app = express();
 app.use(express.static(`${path}/public`));
+app.use(express.json());
 
 app.post('/register', (req, resp)=>{
-    resp.send('Hola soy el servidor :D');
+    resp.send(req.body);
 });
 
 app.listen(PORT, ()=>{
