@@ -7,7 +7,11 @@ app.use(express.static(`${path}/public`));
 app.use(express.json());
 
 app.post('/register', (req, resp)=>{
-    resp.send(req.body);
+    const {usuario, email, pass, confirmPass} = req.body;
+    resp.send(`Datos recibidos: 
+        Usuario: ${usuario}, 
+        email: ${email},
+        contraseña: ${pass}`);
 });
 
 app.listen(PORT, ()=>{
