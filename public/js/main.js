@@ -1,6 +1,6 @@
 const registerForm = document.querySelector("#form-register");
 
-registerForm.addEventListener('submit', function(e){
+registerForm.addEventListener('submit', async function(e){
     e.preventDefault();
     const inputs = this.querySelectorAll("input");
     const dataInfoSend = {};
@@ -11,6 +11,10 @@ registerForm.addEventListener('submit', function(e){
         dataInfoSend[clave] = valor;
     });
 
-    console.log(dataInfoSend)
+    const resp = await fetch('/register',{
+        method: "POST"
+    });
+    const data = await resp.text();
+    console.log(data);
 
 })
